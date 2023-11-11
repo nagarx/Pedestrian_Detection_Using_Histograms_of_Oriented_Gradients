@@ -12,16 +12,16 @@ HOG is a feature descriptor used extensively in computer vision for object detec
 - **Gradient in Images**: The gradient components $G_x$ and $G_y$ at each pixel are calculated using convolution with Sobel kernels. For $G_x$ (horizontal edges), a kernel of 
 
   $$\begin{Bmatrix}
-  -1&0&1\\
-  -2&0&2\\
+  -1&0&1 \\
+  -2&0&2 \\
   -1&0&1
   \end{Bmatrix}$$
 
   is used, and for $G_y$ (vertical edges), a kernel of
 
   $$\begin{Bmatrix}
-  -1&-2&-1\\
-   0&0& 0\\
+  -1&-2&-1 \\
+   0&0& 0 \\
    1&2&1
   \end{Bmatrix}$$
 
