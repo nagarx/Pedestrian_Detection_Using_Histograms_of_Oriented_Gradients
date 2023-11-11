@@ -9,7 +9,7 @@ Pedestrian detection is a fundamental aspect of computer vision. This project fo
 ### Understanding Histogram of Oriented Gradients (HOG)
 HOG is a feature descriptor used extensively in computer vision for object detection, especially effective in human detection. The HOG descriptor involves several mathematical operations:
 
-- **Gradient in Images**: The gradient components $G_x$ and $G_y$ at each pixel are calculated using convolution with Sobel kernels. For $G_x$ (horizontal edges), a kernel of
+- **Gradient in Images**: The gradient components $G_x$ and $G_y$ at each pixel are calculated using convolution with Sobel kernels. For $G_x$ (horizontal edges), a kernel of 
 $$\begin{Bmatrix}
   -1&0&1 \\
   -2&0&2 \\
