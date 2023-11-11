@@ -83,11 +83,11 @@ To run this project, follow these steps:
 
 
 
-$\begin{Bmatrix}
+$$\begin{Bmatrix}
 1&2&3\\
 4 & 6 & 8
 \end{Bmatrix} \times \begin{Bmatrix}
 8 & 5 \\
 7 & 3 \\
 1 & 8 
-\end{Bmatrix}$
+\end{Bmatrix}$$
