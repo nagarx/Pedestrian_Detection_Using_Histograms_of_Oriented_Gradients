@@ -11,19 +11,19 @@ HOG is a feature descriptor used extensively in computer vision for object detec
 
 - **Gradient in Images**: The gradient components $G_x$ and $G_y$ at each pixel are calculated using convolution with Sobel kernels. For $G_x$ (horizontal edges), a kernel of 
 
-  $$\begin{bmatrix}
+  $$\begin{Bmatrix}
   -1 & 0 & 1 \\
   -2 & 0 & 2 \\
   -1 & 0 & 1
-  \end{bmatrix}$$
+  \end{Bmatrix}$$
 
   is used, and for $G_y$ (vertical edges), a kernel of
 
-  $$\begin{bmatrix}
+  $$\begin{Bmatrix}
   -1 & -2 & -1 \\
    0 &  0 &  0 \\
    1 &  2 &  1
-  \end{bmatrix}$$
+  \end{Bmatrix}$$
 
   is applied. Here, $I$ represents the intensity of the image.
 
@@ -80,14 +80,3 @@ To run this project, follow these steps:
 2. Ensure that Python and all the required libraries (OpenCV, NumPy, Matplotlib) are installed.
 3. Navigate to the project directory and open the Jupyter Notebook (`Pedestrian_Detection_Using_HOG.ipynb`).
 4. Run the Jupyter Notebook cells in sequence to execute the pedestrian detection process.
-
-
-
-$$\begin{Bmatrix}
-1&2&3\\
-4 & 6 & 8
-\end{Bmatrix} \times \begin{Bmatrix}
-8 & 5 \\
-7 & 3 \\
-1 & 8 
-\end{Bmatrix}$$
