@@ -11,22 +11,22 @@ HOG is a feature descriptor used extensively in computer vision for object detec
 
 - **Gradient in Images**: The process begins by analyzing how the intensity changes in a grayscale image, indicative of edges. This is quantified using gradients, where a strong gradient is observed in sharp transitions from light to dark areas.
   
-  The gradient components \( G_x \) and \( G_y \) at each pixel are calculated using convolution with Sobel kernels:
+  The gradient components $G_x$ and $G_y$ at each pixel are calculated using convolution with Sobel kernels:
   $$G_x = \begin{pmatrix} -1 & 0 & +1 \\ -2 & 0 & +2 \\ -1 & 0 & +1 \end{pmatrix} * I$$
   $$G_y = \begin{pmatrix} -1 & -2 & -1 \\ 0 & 0 & 0 \\ +1 & +2 & +1 \end{pmatrix} * I$$
-  where \( I \) is the image intensity.
+  where $I$ is the image intensity.
 
-- **Histograms of Gradients**: For each pixel, the gradient magnitude \( G \) and orientation \( \Theta \) are computed:
-  $$ G = \sqrt{G_x^2 + G_y^2} $$
-  $$ \Theta = \arctan\left(\frac{G_y}{G_x}\right) $$
+- **Histograms of Gradients**: For each pixel, the gradient magnitude $G$ and orientation $\Theta$ are computed:
+  $$G = \sqrt{G_x^2 + G_y^2}$$
+  $$\Theta = \arctan\left(\frac{G_y}{G_x}\right)$$
   These are used to populate histograms for small regions (cells) in the image.
 
 - **Detection Using HOG**: The histograms of all cells within a detection window are combined to form a feature vector. This vector is used in a machine learning model, like SVM, for classification.
 
 ### Support Vector Machine (SVM)
 SVM, a supervised machine learning model, is employed for classification tasks in this project. It functions by finding an optimal hyperplane that maximizes the margin between different classes. The decision function for a linear SVM is:
-$$ f(x) = \text{sign}(w^T x + b) $$
-where \( w \) is the weight vector, \( x \) is the feature vector, and \( b \) is the bias. In non-linear cases, SVM utilizes kernel functions like linear, polynomial, or radial basis function (RBF) to transform the input space for classification.
+$$f(x) = \text{sign}(w^T x + b)$$
+where $w$ is the weight vector, $x$ is the feature vector, and $b$ is the bias. In non-linear cases, SVM utilizes kernel functions like linear, polynomial, or radial basis function (RBF) to transform the input space for classification.
 
 In our pedestrian detection system, SVM classifies the extracted HOG features into two categories: pedestrian and non-pedestrian.
 
