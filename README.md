@@ -6,40 +6,43 @@ This project implements a pedestrian detection system using the Histogram of Ori
 ## Project Description
 Pedestrian detection is a fundamental aspect of computer vision. This project focuses on demonstrating the efficiency and implementation of the Histogram of Oriented Gradients (HOG) technique for detecting pedestrians, particularly those who are completely visible and standing up. 
 
-### Understanding Histogram of Oriented Gradients (HOG)
-HOG is a feature descriptor used extensively in computer vision for object detection, especially effective in human detection. The HOG descriptor involves several mathematical operations:
+### Histogram of Oriented Gradients (HOG)
 
-- **Gradient in Images**: The gradient components $G_x$ and $G_y$ at each pixel are calculated using convolution with Sobel kernels. For $G_x$ (horizontal edges), a kernel of 
+The HOG descriptor is grounded in the understanding of image gradients and their orientations. It's designed to capture the local object appearance and shape within an image by the distribution of intensity gradients or edge directions.
 
-$$\begin{Bmatrix}
-  -1&0&1 \\
-  -2&0&2 \\
-  -1&0&1
-\end{Bmatrix}$$
+1. **Gradient Calculation**: The key to HOG is the use of gradients. The gradient of an image at each pixel represents the direction of the fastest increase in intensity. For a pixel at (x, y), the gradient components $G_x$ and $G_y$ are given by:
 
-  is used, and for $G_y$ (vertical edges), a kernel of
+   $$G_x = \frac{\partial I}{\partial x}, \quad G_y = \frac{\partial I}{\partial y}$$
 
-$$\begin{Bmatrix}
-  -1&-2&-1 \\
-   0&0& 0 \\
-   1&2&1
-\end{Bmatrix}$$
+   where $I$ represents the image intensity. Typically, these partial derivatives are computed using the Sobel operator, which uses convolution with specific kernels.
 
-  is applied. Here, $I$ represents the intensity of the image.
+2. **Orientation Binning**: After computing the gradients, the next step is to create histograms of gradient orientations for localized portions of the image. This involves dividing the image into small connected regions (cells) and accumulating a histogram of gradient directions or edge orientations for the pixels within each cell.
 
-- **Histograms of Gradients**: For each pixel, the gradient magnitude $G$ and orientation $\Theta$ are computed:
-  $$G = \sqrt{G_x^2 + G_y^2}$$
-  $$\Theta = \arctan\left(\frac{G_y}{G_x}\right)$$
-  These are used to populate histograms for small regions (cells) in the image.
+3. **Histogram Computation**: The histograms are computed over the cells of the image. For each cell, the gradient orientations are discretized into a number of predefined bins. The contribution of each pixel to the histogram is weighted by its gradient magnitude.
 
-- **Detection Using HOG**: The histograms of all cells within a detection window are combined to form a feature vector. This vector is used in a machine learning model, like SVM, for classification.
+4. **Block Normalization**: The histograms are normalized over larger regions (blocks) to improve accuracy. This normalization is crucial as it renders the descriptor invariant to changes in illumination or shadowing.
 
 ### Support Vector Machine (SVM)
-SVM, a supervised machine learning model, is employed for classification tasks in this project. It functions by finding an optimal hyperplane that maximizes the margin between different classes. The decision function for a linear SVM is:
-$$f(x) = \text{sign}(w^T x + b)$$
-where $w$ is the weight vector, $x$ is the feature vector, and $b$ is the bias. In non-linear cases, SVM utilizes kernel functions like linear, polynomial, or radial basis function (RBF) to transform the input space for classification.
 
-In our pedestrian detection system, SVM classifies the extracted HOG features into two categories: pedestrian and non-pedestrian.
+SVM operates on the principle of finding a hyperplane that best divides a dataset into classes.
+
+1. **Optimal Hyperplane**: In the context of SVM, a hyperplane is a line that linearly separates the classes. The optimal hyperplane is the one that maximizes the margin between the classes. The margin is defined as the distance between the hyperplane and the nearest data point from either class.
+
+2. **Mathematical Formulation**: The decision function of a linear SVM is given by:
+
+   $$f(x) = \text{sign}(w^T x + b)$$
+
+   where $w$ is the normal to the hyperplane, $x$ is the input feature vector, $b$ is the bias, and $\text{sign}$ is the sign function.
+
+3. **Kernel Trick**: For non-linearly separable data, SVM employs the kernel trick. A kernel function transforms the input data into a higher-dimensional space where a linear separator is sufficient. Common kernels include polynomial and radial basis function (RBF).
+
+4. **Soft Margin and Regularization**: To handle non-separable cases and to prevent overfitting, SVM introduces a slack variable $\xi$ and a regularization parameter $C$ in its optimization problem:
+
+   $$\min_{w, b, \xi} \frac{1}{2} \|w\|^2 + C \sum_{i=1}^{n} \xi_i$$
+
+   subject to the constraints that each data point $x_i$ is classified correctly, within a margin error $\xi_i$.
+
+This advanced mathematical background provides a deeper understanding of the principles and algorithms underlying the HOG descriptor and SVM classifier. The mathematical rigor and complexity are suitable for an audience with a strong background in machine learning and computer vision.
 
 
 ## Technological Overview
@@ -80,13 +83,3 @@ To run this project, follow these steps:
 2. Ensure that Python and all the required libraries (OpenCV, NumPy, Matplotlib) are installed.
 3. Navigate to the project directory and open the Jupyter Notebook (`Pedestrian_Detection_Using_HOG.ipynb`).
 4. Run the Jupyter Notebook cells in sequence to execute the pedestrian detection process.
-
-
-$$\begin{Bmatrix}
-1&2&3\\
-4 & 6 & 8
-\end{Bmatrix} \times \begin{Bmatrix}
-8 & 5 \\
-7 & 3 \\
-1 & 8 
-\end{Bmatrix}$$
