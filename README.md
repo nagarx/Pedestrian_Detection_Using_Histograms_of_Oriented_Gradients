@@ -3,6 +3,8 @@
 ## Overview
 This project implements a pedestrian detection system using the Histogram of Oriented Gradients (HOG) method combined with a Support Vector Machine (SVM) for classification. The approach is rooted in computer vision and is highly effective for human detection tasks.
 
+![](/readme_visuals/detected_pedestrians.png)
+
 ## Project Description
 Pedestrian detection is a fundamental aspect of computer vision. This project focuses on demonstrating the efficiency and implementation of the Histogram of Oriented Gradients (HOG) technique for detecting pedestrians, particularly those who are completely visible and standing up. 
 
